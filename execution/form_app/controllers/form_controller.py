@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from execution.form_app.models.database import save_nome, init_db
+from execution.form_app.models.database import init_db
+from execution.form_app.models.teste_model import TesteModel
+from execution.form_app.controllers.dao.teste_dao import TesteDAO
 import os
 
 router = APIRouter()
@@ -27,8 +29,12 @@ async def submit_form(request: Request, nome: str = Form(...)):
     message = None
     status_class = ""
     try:
-        save_nome(nome)
-        message = f"Nome '{nome}' salvo com sucesso!"
+        modelo = TesteModel(Nome=nome)
+        
+        # Persistência na camada Controller usando DAO
+        TesteDAO.save(modelo)
+        
+        message = f"Nome '{modelo.Nome}' salvo com sucesso!"
         status_class = "success"
     except Exception as e:
         message = f"Erro ao salvar: {str(e)}"

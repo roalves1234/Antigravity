@@ -27,11 +27,3 @@ def init_db():
     cursor.close()
     conn.close()
 
-def save_nome(nome: str) -> bool:
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO teste (nome) VALUES (%s)", (nome,))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return True
