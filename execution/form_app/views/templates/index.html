@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Nome</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root {
+            --primary-color: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg-color: #0F172A;
+            --card-bg: #1E293B;
+            --text-color: #F8FAFC;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #94A3B8;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+            background-color: #0F172A;
+            color: var(--text-color);
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .success {
+            background-color: #064E3B;
+            color: #34D399;
+        }
+        .error {
+            background-color: #7F1D1D;
+            color: #F87171;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Novo Registro</h1>
+        <form method="POST" action="/">
+            <div class="input-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome..." autocomplete="off">
+            </div>
+            <button type="submit">Salvar Formulário</button>
+        </form>
+        {% if message %}
+        <div class="message {{ status_class }}">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
