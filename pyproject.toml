@@ -1,0 +1,13 @@
+[project]
+name = "antigravity"
+version = "0.1.0"
+description = "Antigravity Project"
+dependencies = [
+    "fastapi",
+    "jinja2",
+    "psycopg2-binary",
+    "python-dotenv",
+    "python-multipart",
+    "uvicorn",
+]
+requires-python = ">=3.12"
